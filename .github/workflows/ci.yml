@@ -69,7 +69,7 @@ jobs:
           - 5000:5000
     env:
       DOCKER_IMAGE_NAME: ${{ github.repository }}
-      DOCKERHUB_IMAGE_NAME: tecnativa/docker-socket-proxy
+      DOCKERHUB_IMAGE_NAME: h07i/socket-proxy
       PUSH: ${{ toJSON(github.event_name != 'pull_request') }}
     steps:
       # Set up Docker Environment
@@ -104,14 +104,8 @@ jobs:
           context: .
           file: ./Dockerfile
           platforms: |
-            linux/386
             linux/amd64
-            linux/arm/v6
-            linux/arm/v7
-            linux/arm/v8
             linux/arm64
-            linux/ppc64le
-            linux/s390x
           load: false
           push: true
           cache-from: type=local,src=/tmp/.buildx-cache
@@ -152,14 +146,8 @@ jobs:
           context: .
           file: ./Dockerfile
           platforms: |
-            linux/386
             linux/amd64
-            linux/arm/v6
-            linux/arm/v7
-            linux/arm/v8
             linux/arm64
-            linux/ppc64le
-            linux/s390x
           load: false
           push: true
           cache-from: type=local,src=/tmp/.buildx-cache
